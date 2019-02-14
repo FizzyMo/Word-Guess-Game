@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carisa's League Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>    
+
+<body onload="start()">
+    <br>
+    <table>
+        <tr>
+            <td>
+                <h1>Knowledge About League of Legends</h1>
+            </td>
+            <td><button class='button' onclick="start()">Reset Game</button></td>
+        </tr>
+
+        <tr>
+            <td>
+                <h2>Guess</h2>
+                <textarea type="text" id="guess" maxlength="1" onkeyup="guessing()"></textarea>
+            </td>
+            <td>
+                <h2>Guessed letters</h2>
+                <p id="G"></p>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div id="0"></div>
+                <div id="1"></div>
+                <div id="2"></div>
+                <div id="3"></div>
+                <div id="4"></div>
+                <div id="5"></div>
+                <div id="6"></div>
+                <div id="7"></div>
+                <div id="8"></div>
+                <div id="9"></div>
+                <div id="10"></div>
+                <div id="11"></div>
+                
+            </td>
+
+
+            <td>
+                <h2>Guesses Left</h2>
+                <p id='g'></p>
+            </td>
+        </tr>
+    </table>
+    <td>
+        <button onclick="hint()" class='button'>Hint</button>
+    </td>
+
+
+    <p id='hint'></p>
+
+
+    <h1 id='message'></h1>
+    <h1 id='word'></h1>
+    <br>
+    <script src="assets/javascript/java.js"></script>
+</body>
+
+</html>

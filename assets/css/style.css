@@ -1,0 +1,60 @@
+* {
+  background-color: rgb(28, 85, 77);
+  color:pink;
+}
+
+div {
+  width: 25px;
+  float: left;
+  font-size: 250%;
+  padding: 3px;
+}
+
+h1 {
+  padding-right: 30px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+div {
+  font-size: 30px;
+}
+
+p {
+  font-size: 30px;
+  ;
+}
+
+.button {
+  background-color: whitesmoke;
+  /* Green */
+  border: none;
+  color: rgb(35, 37, 138);
+  padding: 9px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+}
+
+#guess {
+  height: 50px;
+  display: block;
+  font-size: 30px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 4px solid green;
+  margin-bottom: 6px;
+  width:350px;
+}
+.G {
+  float:left;
+  margin:10px;
+}
+.g {
+  float:left;
+  margin:10px;
+}
