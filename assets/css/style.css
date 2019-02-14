@@ -1,4 +1,4 @@
-* {
+body {
   background-color: rgb(28, 85, 77);
   color:pink;
 }
@@ -29,7 +29,6 @@ p {
 
 .button {
   background-color: whitesmoke;
-  /* Green */
   border: none;
   color: rgb(35, 37, 138);
   padding: 9px 32px;
