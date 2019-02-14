@@ -74,26 +74,3 @@ p {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  h1, h2 {
-    padding: 0%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  h1, h2 {
-    padding: 0%
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .button {
-    padding: 0%
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .button {
-    padding: 0%
-  }
-}
