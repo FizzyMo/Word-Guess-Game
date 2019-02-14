@@ -104,6 +104,6 @@ function won() {
         }
     }
     if (y === word.length) {
-        document.getElementById("message").innerHTML = 'You Won!!! Good job. You either googled the answers or you play league!';
+        document.getElementById("message").innerHTML = 'You Won!!! Good job. You either googled the answers of you play league!';
     }
 }

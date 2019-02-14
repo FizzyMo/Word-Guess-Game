@@ -57,18 +57,3 @@ p {
   float:left;
   margin:10px;
 }
-
-@media only screen and (max-width: 768px) {
-  .button {
-    float: left;
-    width: 250px;
-  }
-}
-
-@media only screen and(max-width: 600px) {
-  .button {
-    float: left;
-    width: 250px;
-  }
-}
-
