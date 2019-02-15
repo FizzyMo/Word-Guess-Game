@@ -26,8 +26,7 @@ function start() {
     count = 0;
     score = 0;
     word = possibleWords[Math.floor(Math.random() * possibleWords.length)];
-    console.log(word);
-    document.getElementById("G").innerHTML = guesses;
+    console.log(word);    document.getElementById("G").innerHTML = guesses;
     document.getElementById("hint").innerHTML = "";
     document.getElementById("message").innerHTML = '';
     document.getElementById("word").innerHTML = '';
@@ -53,7 +52,7 @@ function guessing() {
     print();
 }
 
-function print() {r    for (i = 0; i < word.length; i++) {
+function print() {for (i = 0; i < word.length; i++) {
         if (word[i] === guess) {
             document.getElementById(i).innerHTML = guess;
         }
