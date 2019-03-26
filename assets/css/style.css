@@ -11,31 +11,55 @@ div {
 }
 
 h1 {
-  padding-right: 30px;
+  padding-left: 28%;
+  font-size: 50px;
+}
+
+#top-letter {
+  padding-right: 13%;
+  font-size: 40px;
+}
+
+#hint {
+  text-align: center;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 25px;
+  padding: 0 10% 0 10%;
+  text-align: center;
 }
 
-div {
-  font-size: 30px;
-}
 
 p {
   font-size: 30px;
-  ;
 }
+
 
 .button {
   background-color: whitesmoke;
   border: none;
   color: rgb(35, 37, 138);
   padding: 9px 32px;
+  margin-bottom: 2%;
+  margin-left: 45%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 30px;
+}
+
+.button-reset {
+  background-color: whitesmoke;
+  border: none;
+  color: rgb(35, 37, 138);
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  padding: 7%;
+  font-size: 28px;
+  margin-left: 546%;
+
 }
 
 #guess {
@@ -47,13 +71,6 @@ p {
   background: transparent;
   border-bottom: 4px solid green;
   margin-bottom: 6px;
+  margin-left: 38%;
   width:350px;
-}
-.G {
-  float:left;
-  margin:10px;
-}
-.g {
-  float:left;
-  margin:10px;
 }

@@ -12,19 +12,16 @@
     <br>
     <table>
         <tr>
-            <td>
-                <h1>Knowledge About League of Legends</h1>
-            </td>
-            <td><button class='button' onclick="start()">Reset Game</button></td>
+            <h1>Knowledge About League of Legends</h1>
+            
         </tr>
 
         <tr>
-            <td>
-                <h2>Guess</h2>
+                <h2 id="top-letter">Guess that character</h2>
+                <h2>In this game you be tested on your league of legends characters. Click the hint to start the game. Click on the green line to type one letter at time. Once the game is over your score will be tallied.</h2>
                 <textarea type="text" id="guess" maxlength="1" onkeyup="guessing()"></textarea>
-            </td>
             <td>
-                <h2>Guessed letters</h2>
+                <h2 id="sec-letter">Guessed letters</h2>
                 <p id="G"></p>
             </td>
 
@@ -48,18 +45,21 @@
 
 
             <td>
-                <h2>Guesses Left</h2>
+                <h2 id="thir-letter">Guesses Left</h2>
                 <p id='g'></p>
             </td>
         </tr>
     </table>
+    <p id='hint'></p>
     <td>
         <button onclick="hint()" class='button'>Hint</button>
+        
     </td>
-
-
-    <p id='hint'></p>
-
+    <table>
+    <tr>
+        <td><button class='button-reset' onclick="start()">Reset Game</button></td>
+    </tr>
+    </table>
 
     <h1 id='message'></h1>
     <h1 id='word'></h1>
