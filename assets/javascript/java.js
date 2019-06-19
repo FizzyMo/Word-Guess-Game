@@ -40,6 +40,7 @@ function start() {
     console.log(def.length());
 }
 
+
 function guessing() {
     guess = document.getElementById("guess").value;
     guess = guess.toLowerCase();
@@ -104,4 +105,8 @@ function won() {
     if (y === word.length) {
         document.getElementById("message").innerHTML = 'You Won!!! Good job. You either googled the answers or you play league!';
     }
+}
+
+window.onload = function(){
+    start();
 }
