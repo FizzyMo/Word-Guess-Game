@@ -1,112 +1,103 @@
-var word = "";
-var guess = "";
-var guesses = [];
-var num = 0;
-var wrong = 0;
-var blah = false;
-var possibleWords = ['leona', 'sivir', 'jinx', 'ahri', 'teemo', 'braum', 'nautilus', 'diana', 'morgana', 'missfortune', 'caitlyn', 'tristana', 'masteryi', 'soraka', 'rakan', 'xayah', 'ashe', 'vi', 'irelia'];
+const possibleWords = ['leona', 'sivir', 'jinx', 'ahri', 'teemo', 'braum', 'nautilus', 'diana', 
+        'morgana', 'missfortune', 'caitlyn', 'tristana', 'masteryi', 'soraka', 'rakan', 'xayah', 
+        'ashe', 'vi', 'irelia'];
 
-var def = ['i must not fall', 'everyone has a price', 'i feel like i forgot to shoot something', 'dont you trust me', 'ill scout ahead', 'you hit like baby ram', 'all will drown', 'no more lies', 'without mercy', 'i know what im doing', 'boom headshot', 'get in my way i dare ya', 'form before strength', 'this is my path', 'you going to marry me today', 'compromise is so unsatisfying', 'i always take the high ground', 'here i come to save the day.. or wreck it', 'tyrant'];
-
-
-
-document.getElementById("guess")
-    .addEventListener("keyup", function (event) {
-        event.preventDefault();
-        if (event.keyCode == 10) {
-            document.getElementById("check").click();
+const def = ['i must not fall', 'everyone has a price', 'i feel like i forgot to shoot something', 
+        'dont you trust me', 'ill scout ahead', 'you hit like baby ram', 'all will drown', 
+        'no more lies', 'without mercy', 'i know what im doing', 'boom headshot', 
+        'get in my way i dare ya', 'form before strength', 'this is my path', 
+        'you going to marry me today', 'compromise is so unsatisfying', 
+        'i always take the high ground', 'here i come to save the day.. or wreck it', 'tyrant'];
+let underscores = [];
+let guesses = [];
+let remainingGuesses = 5;
+let randomIndex = "";
+let word = "";
+let generateUnderscores = () => {
+    underscores = [];
+    for (let i = 0; i < word.length; i++) {
+        if (word.charAt(i)) {
+            underscores.push("_");
         }
-    });
+    }
+    return underscores;
+};
 
-function start() {
-    document.getElementById("g").innerHTML = "10";
-    guess = "";
+/* Stripped down start to basically just what would be necessary to initially boot and reboot the 
+        program for the reset button functionality*/
+let start = () => {
+    remainingGuesses = 5;
+    word;
     guesses = [];
-    num = 0;
-    count = 0;
-    score = 0;
-    word = possibleWords[Math.floor(Math.random() * possibleWords.length)];
-    console.log(word);    document.getElementById("G").innerHTML = guesses;
+
+    randomIndex = Math.floor(Math.random() * possibleWords.length);
+    word = possibleWords[randomIndex].toUpperCase();
+
+    document.getElementById("g").innerHTML = remainingGuesses;
+    document.getElementById("G").innerHTML = guesses;
     document.getElementById("hint").innerHTML = "";
-    document.getElementById("message").innerHTML = '';
-    document.getElementById("word").innerHTML = '';
-    for (i = 0; i < 12; i++) {
-        document.getElementById(i).innerHTML = "";
+    document.getElementById("message").innerHTML = "";
+    document.getElementById("word").innerHTML = "";
+    document.getElementById("answer").innerHTML = generateUnderscores().join(" ");
+};
+
+document.addEventListener("keyup", event => {
+    // Checks if the "win" or "lose" condition was met, if they have it will not accept anymore input
+    if (underscores.join("") == word || remainingGuesses <= 0) {
+        return false;
     }
-    for (i = 0; i < word.length; i++) {
-        document.getElementById(i).innerHTML = "_";
-    }
-    console.log(newWords.length());
-    console.log(def.length());
-}
 
+    // Just changes whatever key you type into a capital, establishes the keyChar variable
+    let keyChar = String.fromCharCode(event.keyCode).toUpperCase();
 
-function guessing() {
-    guess = document.getElementById("guess").value;
-    guess = guess.toLowerCase();
-    if (guess !== null) {
-        if (guesses.includes(guess)) { } else {
+    /* This first checks to see if the key you hit is in the word you are guessing, then changes the
+            underscores and updates the "answer" on the screen */
+    if (word.indexOf(keyChar) >= 0) {
+        updateUnderscores(keyChar);
+        document.getElementById("answer").innerHTML = underscores.join(" ");
 
+        // This checks if the win condition is met, if it is it'll display text
+        if (underscores.join("") == word) {
+            document.getElementById("message").innerHTML = 
+                'You Won!!! Good job. You either googled the answers or you play league!';
         }
     }
+    /* This else if occurs if your key you've clicked is NOT in the word you're guessing AND it's not
+            in the guess list currently, and then... */
+    else if (guesses.indexOf(keyChar) < 0) {
+        // ... It increments the count
+        document.getElementById ("g").textContent = --remainingGuesses;
 
-    print();
-}
-
-function print() {for (i = 0; i < word.length; i++) {
-        if (word[i] === guess) {
-            document.getElementById(i).innerHTML = guess;
+        // This checks if the loss condition is met, if it is it'll display text
+        if (remainingGuesses <= 0) {
+            document.getElementById("message").innerHTML = 
+            'You Lost <br>' + 
+            'The word was: ' + word;
         }
     }
-    if (!(word.includes(guess))) {
-        if (!(guesses.includes(guess))) {
-            count = count + 1;
-            var left = 5 - count;
-            if (left === 0) {
-                document.getElementById("message").innerHTML = 'You Lost :(';
-                document.getElementById("word").innerHTML = 'The word was: ' + word;
-            }
-            document.getElementById("g").innerHTML = left;
-            guesses.push(guess);
-            document.getElementById("G").innerHTML = guesses;
+    /* Secondary check if the key above has been put on the guess list that will occur whether it was in
+            the word or not, and...*/
+    if (guesses.indexOf(keyChar) < 0) {
+        // ... Updates the guess list with the new character and separates the key with a ","
+        guesses.push(keyChar)
+        document.getElementById("G").innerHTML = guesses.join(",");
+    }
+});
+
+/* This function goes and changes the _'s to the actual letters that correspond to the word you're
+        guessing to display */
+let updateUnderscores = keyChar => {
+    for (var i = 0; i < word.length; i++) {
+        if (keyChar == word.charAt(i)) {
+            underscores[i] = keyChar;
         }
     }
+};
 
+// This makes the hint button display the hint
+let hint = () => {
+    document.getElementById("hint").innerHTML = def[randomIndex];
+};
 
-    if (!(guesses.includes(guess))) {
-        guesses.push(guess);
-        document.getElementById("G").innerHTML = guesses;
-    }
-    document.getElementById("guess").value = "";
-    won();
-    document.getElementById("guess").value = "";
-
-}
-
-function hint() {
-    var a = possibleWords.indexOf(word);
-    console.log(a);
-    document.getElementById("hint").innerHTML = def[a];
-}
-
-function won() {
-    var x = "";
-    var y = 0;
-    for (i = 0; i < word.length; i++) {
-        i = i.toString();
-        x = document.getElementById(i).innerHTML;
-        console.log(x);
-        if (x != "_") {
-            y += 1;
-            console.log(x);
-            console.log(y);
-        }
-    }
-    if (y === word.length) {
-        document.getElementById("message").innerHTML = 'You Won!!! Good job. You either googled the answers or you play league!';
-    }
-}
-
-window.onload = function(){
-    start();
-}
+// Runs!!!
+start();
